@@ -1,0 +1,48 @@
+import random
+vida = 6
+correct_letters = []
+word_list = ["child","horse","apple","shirt","cheesecake","apple",
+    "computer",
+    "python",
+    "keyboard",
+    "monitor",
+    "window",
+    "bottle",
+    "phone",
+    "notebook",
+    "mouse",
+    "garden",
+    "school",
+    "picture",
+    "music",
+    "coffee",
+    "chocolate",
+    "airplane",
+    "library",
+    "camera",
+    "internet"]
+pc_choice = random.choice(word_list)
+game_over = False
+while not game_over and vida > 0:
+    user_choice = str(input("Wich letter do you chose?\n")).lower()
+    blank_word = ""
+    for letter in pc_choice:
+        if letter == user_choice:
+            blank_word += letter
+            if user_choice not in correct_letters:
+                correct_letters.append(user_choice)
+        elif letter in correct_letters:
+            blank_word += letter
+        else:
+            blank_word += "_"
+    if user_choice not in pc_choice:
+        print(f"this letter is not on the word, so you lost a life, you have {vida - 1} lives left")
+        vida -= 1
+    print(blank_word)
+
+    if "_" not in blank_word:
+        game_over = True
+        print("You guessed the word, congratulations you win")
+
+if vida == 0:
+    print("You are out of lives, you lose")
