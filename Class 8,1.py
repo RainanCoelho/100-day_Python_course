@@ -1,0 +1,50 @@
+def calculate_love_score(name1,name2):
+    
+    name1 = name1.lower()
+    name2 = name2.lower()
+    t = "true"
+    score = 0
+    for letterT in t:
+        contt = 0
+        for letter in name1:
+            if letter == letterT:
+                contt += 1
+                score += 1
+        print(f"The letter '{letterT}' occurs {contt} times in the name {name1}")
+    print(f"Total = {score}")
+    score2 = 0
+    for letterT in t:
+        contt = 0
+        for letter in name2:
+            if letter == letterT:
+                contt += 1
+                score2 += 1
+        print(f"The letter '{letterT}' occurs {contt} times in the name {name2}")
+    print(f"Total = {score2}")
+    totalscore = score + score2
+    print(f"The total score is: {totalscore}")
+
+    t = "love"
+    score = 0
+    for letterT in t:
+        contt = 0
+        for letter in name1:
+            if letter == letterT:
+                contt += 1
+                score += 1
+        print(f"The letter '{letterT}' occurs {contt} times in the name {name1}")
+    print(f"Total = {score}")
+    score2 = 0
+    for letterT in t:
+        contt = 0
+        for letter in name2:
+            if letter == letterT:
+                contt += 1
+                score2 += 1
+        print(f"The letter '{letterT}' occurs {contt} times in the name {name2}")
+    print(f"Total = {score2}")
+    totalscore2 = score + score2
+    print(f"The total score is: {totalscore2}")
+    print(f"Love Score = {totalscore*10 + totalscore2}")
+
+calculate_love_score("Kanye West","Kim Kardashian")
