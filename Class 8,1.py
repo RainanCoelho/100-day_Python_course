@@ -1,50 +1,54 @@
-def calculate_love_score(name1,name2):
-    
-    name1 = name1.lower()
-    name2 = name2.lower()
-    t = "true"
-    score = 0
-    for letterT in t:
-        contt = 0
-        for letter in name1:
-            if letter == letterT:
-                contt += 1
-                score += 1
-        print(f"The letter '{letterT}' occurs {contt} times in the name {name1}")
-    print(f"Total = {score}")
-    score2 = 0
-    for letterT in t:
-        contt = 0
-        for letter in name2:
-            if letter == letterT:
-                contt += 1
-                score2 += 1
-        print(f"The letter '{letterT}' occurs {contt} times in the name {name2}")
-    print(f"Total = {score2}")
-    totalscore = score + score2
-    print(f"The total score is: {totalscore}")
+alphabet = [
+    "a", "b", "c", "d", "e", "f", "g",
+    "h", "i", "j", "k", "l", "m", "n",
+    "o", "p", "q", "r", "s", "t", "u",
+    "v", "w", "x", "y", "z"
+]
+code = True
+while code == True:
+    print("Welcome do my ceaser cipher mechanism!!!")
+    answer1 = str(input("Do tou want to encode ou decode?\n"))
+    if answer1 == "encode":
+        def encode(word):
+            result = ""
+            valor = int(input("What is the quantity of number you want to jump?(1...26)\n"))
+            for letter in word:
+                    if letter in alphabet:
+                        position = alphabet.index(letter)
+                        new_index = (position + valor) % 26
+                        new_letter = alphabet[new_index]
+                        result += new_letter
+                    if letter == " ":
+                            result+= " "
+            print(f"Your encripted word is: {result}")
 
-    t = "love"
-    score = 0
-    for letterT in t:
-        contt = 0
-        for letter in name1:
-            if letter == letterT:
-                contt += 1
-                score += 1
-        print(f"The letter '{letterT}' occurs {contt} times in the name {name1}")
-    print(f"Total = {score}")
-    score2 = 0
-    for letterT in t:
-        contt = 0
-        for letter in name2:
-            if letter == letterT:
-                contt += 1
-                score2 += 1
-        print(f"The letter '{letterT}' occurs {contt} times in the name {name2}")
-    print(f"Total = {score2}")
-    totalscore2 = score + score2
-    print(f"The total score is: {totalscore2}")
-    print(f"Love Score = {totalscore*10 + totalscore2}")
 
-calculate_love_score("Kanye West","Kim Kardashian")
+        encode(input(f"Write a word to encode:\n").lower())
+
+
+
+    elif answer1 == "decode":
+        def decode(word):
+                result = ""
+                valor = int(input("What is the value of the main key do decode your word?\n"))
+                for letter in word:
+                        if letter in alphabet:
+                            position = alphabet.index(letter)
+                            new_index = (position - valor) % 26
+                            new_letter = alphabet[new_index]
+                            result += new_letter
+                        elif letter == " ":
+                            result += " "
+                print(f"Your decripted word is: {result}")
+
+        decode(input("Write a word to decode\n"))
+    else:
+        print("Wrong answer, plese answer again\n")
+        answer1 = str(input("Do tou want to encode ou decode?\n").lower())
+
+    repeat = str(input("Do you want to use our ceaser cipher mechanism again?(yer/no)\n").lower())
+    if repeat == "yes":
+        code = True
+    elif repeat == "no":
+        print("End of the mechanism")
+        code = False
